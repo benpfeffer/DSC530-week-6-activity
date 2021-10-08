@@ -151,7 +151,7 @@
                   .attr("id", "curr")
                   .attr("d", d => geoPath_generator(d))
                   //.attr("fill", d => colorInterpolator(logScale(d['properties']['POP2010'])))
-                  .attr("fill", d => colorInterpolator(linearScale(d['properties']['POP1980'])))
+                  .attr("fill", d => colorInterpolator(logScale(d['properties']['POP1980'])))
                   .on("mouseenter", (m, d) => {
                       tooltip.transition()
                           .duration(200)
@@ -661,13 +661,14 @@
                   .attr("id", "curr")
                   .attr("d", d => geoPath_generator(d))
                   //.attr("fill", d => colorInterpolator(logScale(d['properties']['POP2010'])))
-                  .attr("fill", d => colorInterpolator(linearScale(d['properties']['FIPS_STCO'])))
+                  .attr("fill", d => colorInterpolator(logScale(d['properties']['FIPS_STCO'])))
                   .on("mouseenter", (m, d) => {
                       tooltip.transition()
                           .duration(200)
                           .style("opacity", .9)
-                      tooltip.html("<div>"+d['properties']['FIPS_STCO']+"</div>"
-                                  +"<div>"+(d['properties']['POP2010'] - d['properties']['POP1980'])+"</div>"
+                      tooltip.html("<div>FIPS: "+d['properties']['FIPS_STCO']+"</div>"
+                                  +"<div>Town: "+d['properties']['TOWN']+"</div>"
+                                  +"<div>2010 Population: "+d['properties']['POP2010']+"</div>"
 
 
                     )
